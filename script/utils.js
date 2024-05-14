@@ -4,6 +4,7 @@ function createGrid(map){
     while (grid.firstChild) {
         grid.removeChild(grid.firstChild);
     }
+    gameState = [];
     grid.style.gridTemplateRows = `repeat(${caseNumber}, 1fr)`;
     grid.style.gridTemplateColumns = `repeat(${caseNumber}, 1fr)`;
     grid.style.gap = "" + (15 - caseNumber > 0 ? 15-caseNumber : 1) + "px";
@@ -96,9 +97,8 @@ function checkWin(mapName){
         if (sumRow != 1){
             console.log("loose row", sumRow, i);
             return false;
-        }
+        }2
         let sumCol = 0;
-        let j;
         for (j = 0; j < gameState.length ; j++){
             sumCol += gameState[i][j];
         }
@@ -119,8 +119,8 @@ function checkWin(mapName){
             sumDiagRowNWtoSE += gameState[j][j+i];
             sumDiagColNWtoSE += gameState[j+i][j];
 
-            sumDiagRowSEtoNW += gameState[j][4-i-j];
-            sumDiagColSEtoNW += gameState[4-i-j][j];
+            sumDiagRowSEtoNW += gameState[j][gameState.length -1 - i - j];
+            sumDiagColSEtoNW += gameState[j+i][gameState.length -1 - j];
         }
         if (sumDiagRowNWtoSE > 1){
             console.log("loose NWtoSE row", sumDiagRowNWtoSE, i, j);
