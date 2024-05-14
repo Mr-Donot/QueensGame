@@ -13,14 +13,17 @@ function createGrid(map){
         let divLine = document.createElement("div");
         divLine.id = "line-" + line;
         divLine.classList.add("line");
+        let tempLine = [];
         for (let square=0 ; square < caseNumber ; square++){
             let divSquare = document.createElement("div");
             divSquare.id = "case-" + line + "-" + square;
             divSquare.classList.add("case");
             divSquare.style.backgroundColor = color1[map["colorGrid"][line][square]];
             divLine.appendChild(divSquare);
+            tempLine.push(0);
         }
         grid.appendChild(divLine);
+        gameState.push(tempLine);
     }
 }
 
@@ -33,33 +36,113 @@ function addHiddenCrown(){
         imgElement.style.height = '100%';
         imgElement.style.visibility = 'hidden';
         imgElement.classList.add("crown");
+        imgElement.id = "img-" + caseElement.id.split("-")[1] + "-" + + caseElement.id.split("-")[2]
         caseElement.appendChild(imgElement);
     })
 }
 
-function addClickEventToCases() {
+function addClickEventToCases(mapName) {
+    //listener for img
     var imgs = document.querySelectorAll('.crown');
 
     function changeVisibilityCrownOnClick(event) {
         var imgElement = event.target;
         imgElement.style.visibility = (imgElement.style.visibility=="hidden" ? "visible" : "hidden");
+        let index = imgElement.id.split("-");
+        if (imgElement.style.visibility == "visible"){
+            gameState[index[1]][index[2]] = 1;
+        }
+        else{
+            gameState[index[1]][index[2]] = 0;
+        }
+        checkWin(mapName);
     }
 
     imgs.forEach(function(elem) {
         elem.addEventListener('click', changeVisibilityCrownOnClick);
     });
 
+    //listener for div
     var cases = document.querySelectorAll('.case');
     function changeVisibilityCrownInsideCaseOnClick(event) {
         var imgElement = event.target.getElementsByTagName('img')[0];
         if (imgElement != undefined) {     
             imgElement.style.visibility = (imgElement.style.visibility=="hidden" ? "visible" : "hidden");
-   
+            let index = imgElement.id.split("-");
+            if (imgElement.style.visibility == "visible"){
+                
+                gameState[index[1]][index[2]] = 1;
+            }
+            else{
+                gameState[index[1]][index[2]] = 0;
+            }
+            checkWin(mapName);
         }
     }
     cases.forEach(function(elem) {
         elem.addEventListener('click', changeVisibilityCrownInsideCaseOnClick);
     });
+
+
+}
+
+function checkWin(mapName){
+    // check rows and cols
+    let i;
+    let j;
+
+    for (i = 0; i < gameState.length ; i++){
+        let sumRow = gameState[i].reduce((a, b) => a + b);
+        if (sumRow != 1){
+            console.log("loose row", sumRow, i);
+            return false;
+        }
+        let sumCol = 0;
+        let j;
+        for (j = 0; j < gameState.length ; j++){
+            sumCol += gameState[i][j];
+        }
+        if (sumCol != 1){
+            console.log("loose col", sumCol, i, j);
+            return false;
+        }
+    }
+    //TODO : check diagonals
+    for (i = 0 ; i < gameState.length -1 ; i++){
+        let sumDiagRowNWtoSE = 0;
+        let sumDiagColNWtoSE = 0;
+        
+        let sumDiagRowSEtoNW = 0;
+        let sumDiagColSEtoNW = 0;
+
+        for (j = 0 ; j < gameState.length - i ; j++){
+            sumDiagRowNWtoSE += gameState[j][j+i];
+            sumDiagColNWtoSE += gameState[j+i][j];
+
+            sumDiagRowSEtoNW += gameState[j][4-i-j];
+            sumDiagColSEtoNW += gameState[4-i-j][j];
+        }
+        if (sumDiagRowNWtoSE > 1){
+            console.log("loose NWtoSE row", sumDiagRowNWtoSE, i, j);
+            return false;
+        }
+        if (sumDiagColNWtoSE > 1){
+            console.log("loose NWtoSE col", sumDiagColNWtoSE, i, j);
+            return false;
+        }
+        if (sumDiagRowSEtoNW > 1){
+            console.log("loose SEtoNW row", sumDiagRowSEtoNW, i, j);
+            return false;
+        }
+        if (sumDiagColSEtoNW > 1){
+            console.log("loose SEtoNW col", sumDiagColSEtoNW    , i, j);
+            return false;
+        }
+    }
+
+    //TODO : check by color
+    console.log("win !");
+    return true;
 }
 
 
@@ -67,7 +150,7 @@ function launchMap(mapName){
     let map = maps[mapName];
     createGrid(map);
     addHiddenCrown();
-    addClickEventToCases();
+    addClickEventToCases(mapName);
 }
 
 function buttonSelectMapOnClick(){

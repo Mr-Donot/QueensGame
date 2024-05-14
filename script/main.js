@@ -1,3 +1,4 @@
+let gameState = [];
 buttonSelectMapOnClick();
 
 
