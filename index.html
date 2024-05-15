@@ -12,17 +12,27 @@
 </head>
 
 <body>
+    <!-- Menu choix de la map-->
     <div id="menu">
         <select id="mapSelector">
             <option value="">--Please choose an option--</option>
-            <option value="map1">5x5</option>
-            <option value="map2">6x6</option>
-            <option value="map3">3x3</option>
         </select>
         <button id="buttonPlay">Play</button>
     </div>
+
+    <!-- Terrain de jeu -->
     <div id="grid">
     </div>
+
+    <!-- Pop-Up de Victoire -->
+    <div id="victory-popup" class="popup-container" style="display:none;">
+    <div class="popup-content">
+      <h2>Félicitations !</h2>
+      <p>Vous avez gagné la partie !</p>
+      <button onclick="closePopup()">Fermer</button>
+    </div>
+  </div>
+  
 </body>
 
 </html>
