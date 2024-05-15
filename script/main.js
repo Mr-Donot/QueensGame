@@ -23,6 +23,7 @@ function closePopup() {
   
 
 fillSelectBox();
+buttonRandomMapOnClick();
 buttonSelectMapOnClick();
 
 

@@ -172,6 +172,18 @@ function launchMap(mapName){
     addClickEventToCases(mapName);
 }
 
+function buttonRandomMapOnClick(){
+    let button = document.querySelector("#buttonRandomPlay");
+    button.addEventListener("click", ()=>{
+        arrayMaps = Object.keys(maps);
+        let choice = arrayMaps[Math.floor(Math.random() * arrayMaps.length)];
+        if (choice != ""){
+            currentMap = choice;
+            launchMap(choice);
+        }
+    })
+}
+
 function buttonSelectMapOnClick(){
     let button = document.querySelector("#buttonPlay");
     button.addEventListener("click", ()=>{
