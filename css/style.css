@@ -1,3 +1,54 @@
+/* Style pour l'ensemble du menu et ses éléments */
+#menu {
+    display: flex; /* Affiche les éléments du menu côte à côte */
+    flex-direction: row; /* Oriente les éléments horizontalement */
+    justify-content: center; /* Centre les éléments dans le conteneur */
+    align-items: center; /* Alignement vertical au centre */
+    padding: 20px;
+    background: #f8f8f8; /* Couleur de fond pour le menu */
+    border-bottom: 2px solid #e7e7e7; /* Ligne de séparation */
+}
+
+/* Style pour le sélecteur de carte */
+#mapSelector {
+    padding: 10px;
+    margin-right: 10px; /* Espace entre le sélecteur et le bouton */
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white; /* Couleur de fond pour le sélecteur de carte */
+    cursor: pointer;
+}
+
+/* Style pour le bouton de lecture */
+#buttonPlay {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background-color: #32CD32; /* Couleur du bouton vert */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition pour un effet au survol */
+}
+
+#buttonPlay:hover {
+    background-color: #28a745; /* Couleur du bouton au survol */
+}
+
+/* Ajoutez éventuellement des médias queries pour adapter le style pour les petits écrans, si nécessaire */
+@media (max-width: 600px) {
+    #menu {
+        flex-direction: column; /* Empile les éléments verticalement sur petits écrans */
+    }
+    #mapSelector {
+        margin-bottom: 10px; /* Espace supplémentaire entre les sélecteurs et le bouton */
+        margin-right: 0; /* Pas d'espace à droite du sélecteur */
+    }
+}
+
+
+
 #grid {
     display: grid;
     grid-template-rows: repeat(3, 1fr); /* Crée trois lignes avec des hauteurs égales */
@@ -20,3 +71,44 @@
     align-items: center; /* Centrer verticalement le contenu de la case */
     border-radius: 10%;
 }
+
+/* Style de la pop-up de victoire */
+.popup-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Couleur de fond avec transparence */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Assurez-vous que la pop-up est au-dessus des autres éléments */
+  }
+  
+  .popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    text-align: center;
+  }
+  
+  .popup-content h2 {
+    color: #32CD32; /* Couleur verte pour représenter la victoire */
+  }
+  
+  .popup-content button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #32CD32; /* Bouton de couleur verte */
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .popup-content button:hover {
+    background-color: #2e8b57;
+  }
+  
