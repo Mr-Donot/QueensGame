@@ -95,7 +95,6 @@ function checkWin(mapName){
     for (i = 0; i < gameState.length ; i++){
         let sumRow = gameState[i].reduce((a, b) => a + b);
         if (sumRow != 1){
-            console.log("loose row", sumRow, i);
             return false;
         }2
         let sumCol = 0;
@@ -103,51 +102,71 @@ function checkWin(mapName){
             sumCol += gameState[i][j];
         }
         if (sumCol != 1){
-            console.log("loose col", sumCol, i, j);
             return false;
         }
     }
     //TODO : check diagonals
-    for (i = 0 ; i < gameState.length -1 ; i++){
-        let sumDiagRowNWtoSE = 0;
-        let sumDiagColNWtoSE = 0;
-        
-        let sumDiagRowSEtoNW = 0;
-        let sumDiagColSEtoNW = 0;
+    for (i=1;i<gameState.length - 1 ; i++){
+        for (j=1;j<gameState.length - 1 ; j++){
+            let val_center = gameState[i][j];
+            if (val_center == 1){
+                if (gameState[i-1][j-1] == 1) {
+                    console.log("loose NW", i, j);
+                    return false;
+                }
+                if (gameState[i-1][j+1]==1) {
+                    console.log("loose NE", i, j);
+                    return false;
+                }
+                if (gameState[i+1][j-1]==1) {
+                    console.log("loose SW", i, j);
+                    return false;
+                }
+                if (gameState[i+1][j+1]==1) {
+                    console.log("loose SE", i, j);
+                    return false;
+                }
+            }
+        }    
+    }
 
-        for (j = 0 ; j < gameState.length - i ; j++){
-            sumDiagRowNWtoSE += gameState[j][j+i];
-            sumDiagColNWtoSE += gameState[j+i][j];
-
-            sumDiagRowSEtoNW += gameState[j][gameState.length -1 - i - j];
-            sumDiagColSEtoNW += gameState[j+i][gameState.length -1 - j];
+    //check by color
+    for (var key in blocks){
+        let sumBlock = 0;
+        for (i = 0 ; i < blocks[key].length ; i++){
+            sumBlock += gameState[blocks[key][i][0]][blocks[key][i][1]];
         }
-        if (sumDiagRowNWtoSE > 1){
-            console.log("loose NWtoSE row", sumDiagRowNWtoSE, i, j);
-            return false;
-        }
-        if (sumDiagColNWtoSE > 1){
-            console.log("loose NWtoSE col", sumDiagColNWtoSE, i, j);
-            return false;
-        }
-        if (sumDiagRowSEtoNW > 1){
-            console.log("loose SEtoNW row", sumDiagRowSEtoNW, i, j);
-            return false;
-        }
-        if (sumDiagColSEtoNW > 1){
-            console.log("loose SEtoNW col", sumDiagColSEtoNW    , i, j);
+        if (sumBlock > 1) {
+            console.log("loose color ", key, sumBlock);
             return false;
         }
     }
 
-    //TODO : check by color
-    console.log("win !");
+    showPopup();
+
     return true;
 }
 
 
+function fillBlocks(colorGrid){
+    blocks = {}
+    let i;
+    let j;
+    for (i=0;i<colorGrid.length ; i++){
+        for (j=0;j<colorGrid[i].length ; j++){
+            if (""+colorGrid[i][j] in blocks){
+                blocks[""+colorGrid[i][j]].push([i,j]);
+            }
+            else{
+                blocks[""+colorGrid[i][j]] = [[i,j]];
+            }
+        }
+    }
+}
+
 function launchMap(mapName){
     let map = maps[mapName];
+    fillBlocks(map["colorGrid"]);
     createGrid(map);
     addHiddenCrown();
     addClickEventToCases(mapName);
@@ -158,6 +177,7 @@ function buttonSelectMapOnClick(){
     button.addEventListener("click", ()=>{
         let choice = document.querySelector("#mapSelector").value;
         if (choice != ""){
+            currentMap = choice;
             launchMap(choice);
         }
     })
