@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <title>Queens</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="script/maps.js" defer></script>
     <script src="script/constants.js" defer></script>
     <script src="script/utils.js" defer></script>
     <script src="script/main.js" defer></script>
@@ -33,6 +34,17 @@
       <button onclick="closePopup()">Fermer</button>
     </div>
   </div>
+  <script>
+    // Step 2: Load JSON data using JavaScript
+    fetch('file:///C:/Users/Florian/Documents/Code/git/QueensGame/generated_maps/maps.json') // Adjust the path to your JSON file
+            .then(response => response.json())
+            .then(data => {
+                // Display data on HTML page
+                const jsonContentDiv = document.getElementById('json-content');
+                jsonContentDiv.innerText = JSON.stringify(data, null, 2); // Display formatted JSON
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+  </script>
   
 </body>
 
