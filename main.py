@@ -88,7 +88,7 @@ except FileNotFoundError:
     with open(fichier_json, 'w') as json_file:
         json.dump(data, json_file)
 
-for i in range(10):
+for i in range(5):
     new_map = generate_map(8)
     data["map"+str(len(data.keys())+1)] = new_map
 
