@@ -179,6 +179,7 @@ function buttonRandomMapOnClick(){
         let choice = arrayMaps[Math.floor(Math.random() * arrayMaps.length)];
         if (choice != ""){
             currentMap = choice;
+            document.querySelector("#mapSelector").value = choice;
             launchMap(choice);
         }
     })
