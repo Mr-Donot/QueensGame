@@ -1,7 +1,7 @@
 import json
 from random import randint, sample
 
-
+NB_TO_GENERATE = 10
 
 
 def generate_map(case_number: int, name=None)-> dict:
@@ -88,7 +88,7 @@ except FileNotFoundError:
     with open(fichier_json, 'w') as json_file:
         json.dump(data, json_file)
 
-for i in range(5):
+for i in range(NB_TO_GENERATE):
     new_map = generate_map(8)
     data["map"+str(len(data.keys())+1)] = new_map
 
