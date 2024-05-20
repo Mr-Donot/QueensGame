@@ -8,6 +8,10 @@ see more here : https://www.linkedin.com/games/queens/
 
 # How to play
 
+## Online
+here : https://mr-donot.github.io/QueensGame/
+
+##Offline
 - download the project
 - open index.html
 - Enjoy the game !
