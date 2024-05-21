@@ -1,3 +1,5 @@
+[![pages-build-deployment](https://github.com/Mr-Donot/QueensGame/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Mr-Donot/QueensGame/actions/workflows/pages/pages-build-deployment)
+
 # QueensGame
 
 homemade game inspired by linkedin game : **Queens**
