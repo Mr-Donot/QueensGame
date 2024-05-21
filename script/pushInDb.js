@@ -29,6 +29,7 @@ async function saveWinInDB() {
             saveNewData(timer);
         } else {
             console.log("Existing timer is better. Not updating.");
+            closePopup();
         }
     } catch (error) {
         console.error("Error fetching map data:", error);
