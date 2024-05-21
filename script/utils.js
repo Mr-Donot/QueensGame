@@ -101,18 +101,11 @@ function checkWin(mapName){
             return false;
         }2
         let sumCol = 0;
-        if (i == 0){
-            console.log("HERE :=====")
-            console.log(gameState);
-            console.log("---");
-        }
+
         for (j = 0; j < gameState[i].length ; j++){
             sumCol += gameState[j][i];
-            console.log(gameState[j][i], i, j)
         }
-        if (i == 0){
-            console.log("===========")
-        }
+
         if (sumCol != 1){
             return false;
         }
@@ -123,19 +116,15 @@ function checkWin(mapName){
             let val_center = gameState[i][j];
             if (val_center == 1){
                 if (gameState[i-1][j-1] == 1) {
-                    console.log("loose NW", i, j);
                     return false;
                 }
                 if (gameState[i-1][j+1]==1) {
-                    console.log("loose NE", i, j);
                     return false;
                 }
                 if (gameState[i+1][j-1]==1) {
-                    console.log("loose SW", i, j);
                     return false;
                 }
                 if (gameState[i+1][j+1]==1) {
-                    console.log("loose SE", i, j);
                     return false;
                 }
             }
@@ -149,7 +138,6 @@ function checkWin(mapName){
             sumBlock += gameState[blocks[key][i][0]][blocks[key][i][1]];
         }
         if (sumBlock > 1) {
-            console.log("loose color ", key, sumBlock);
             return false;
         }
     }
