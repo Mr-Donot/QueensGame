@@ -9,3 +9,5 @@ function saveWinInDB(){
       timer:0,
     });
 }
+
+document.querySelector("#close-popup").addEventListener("click", saveWinInDB);

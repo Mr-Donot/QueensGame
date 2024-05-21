@@ -14,7 +14,6 @@ function fillSelectBox(){
 
 function showPopup() {
     document.getElementById('victory-popup').style.display = 'flex';
-    saveWinInDB();
 }
   
 function closePopup() {
