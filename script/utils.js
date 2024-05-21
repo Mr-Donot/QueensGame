@@ -47,6 +47,7 @@ function addClickEventToCases(mapName) {
     var imgs = document.querySelectorAll('.crown');
 
     function changeVisibilityCrownOnClick(event) {
+        startChronometer();
         var imgElement = event.target;
         imgElement.style.visibility = (imgElement.style.visibility=="hidden" ? "visible" : "hidden");
         let index = imgElement.id.split("-");
@@ -67,7 +68,8 @@ function addClickEventToCases(mapName) {
     var cases = document.querySelectorAll('.case');
     function changeVisibilityCrownInsideCaseOnClick(event) {
         var imgElement = event.target.getElementsByTagName('img')[0];
-        if (imgElement != undefined) {     
+        if (imgElement != undefined) {
+            startChronometer();    
             imgElement.style.visibility = (imgElement.style.visibility=="hidden" ? "visible" : "hidden");
             let index = imgElement.id.split("-");
             if (imgElement.style.visibility == "visible"){
@@ -93,13 +95,23 @@ function checkWin(mapName){
     let j;
 
     for (i = 0; i < gameState.length ; i++){
-        let sumRow = gameState[i].reduce((a, b) => a + b);
+        let copiedArray = [...gameState[i]];
+        let sumRow = copiedArray.reduce((a, b) => a + b);
         if (sumRow != 1){
             return false;
         }2
         let sumCol = 0;
-        for (j = 0; j < gameState.length ; j++){
-            sumCol += gameState[i][j];
+        if (i == 0){
+            console.log("HERE :=====")
+            console.log(gameState);
+            console.log("---");
+        }
+        for (j = 0; j < gameState[i].length ; j++){
+            sumCol += gameState[j][i];
+            console.log(gameState[j][i], i, j)
+        }
+        if (i == 0){
+            console.log("===========")
         }
         if (sumCol != 1){
             return false;
@@ -142,6 +154,7 @@ function checkWin(mapName){
         }
     }
 
+    stopChronometer();
     showPopup();
 
     return true;
@@ -166,6 +179,7 @@ function fillBlocks(colorGrid){
 
 function launchMap(mapName){
     let map = maps[mapName];
+    resetChronometer();
     fillBlocks(map["colorGrid"]);
     createGrid(map);
     addHiddenCrown();

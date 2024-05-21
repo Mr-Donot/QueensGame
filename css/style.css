@@ -4,7 +4,7 @@
     flex-direction: row; /* Oriente les éléments horizontalement */
     justify-content: center; /* Centre les éléments dans le conteneur */
     align-items: center; /* Alignement vertical au centre */
-    padding: 20px;
+    padding: 10px;
     background: #f8f8f8; /* Couleur de fond pour le menu */
     border-bottom: 2px solid #e7e7e7; /* Ligne de séparation */
 }
@@ -35,6 +35,19 @@
 
 #buttonPlay:hover, #buttonRandomPlay:hover {
     background-color: #28a745; /* Couleur du bouton au survol */
+}
+
+#chronometer {
+    font-size: 1.5em; /* Increase the font size for better visibility */
+    margin-left: 10px; /* Space to the left of the chronometer */
+    padding: 5px 10px; /* Padding inside the chronometer span */
+    border: 1px solid #ccc; /* Border around the chronometer */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f8f8f8; /* Background color to match the menu */
+    color: #333; /* Text color */
+    display: inline-block; /* Ensures the span behaves like a block element */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for a digital clock feel */
+    text-align: center; /* Center the text inside the span */
 }
 
 /* Ajoutez éventuellement des médias queries pour adapter le style pour les petits écrans, si nécessaire */
@@ -99,17 +112,37 @@
     color: #32CD32; /* Couleur verte pour représenter la victoire */
   }
   
-  .popup-content button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #32CD32; /* Bouton de couleur verte */
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .popup-content button:hover {
-    background-color: #2e8b57;
-  }
-  
+#username {
+    margin-top: 10px; /* Add space above the input field */
+    padding: 5px 10px; /* Padding inside the input field */
+    border: 1px solid #ccc; /* Border around the input field */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1em; /* Font size */
+}
+
+#save-button, #close-popup {
+    margin-top: 15px; /* Add space between the input field and buttons */
+    padding: 10px 20px; /* Padding inside the buttons */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+#save-button {
+    background-color: #32CD32; /* Button color */
+    color: white; /* Text color */
+}
+
+#close-popup {
+    background-color: #dc3545; /* Button color */
+    color: white; /* Text color */
+}
+
+#save-button:hover {
+    background-color: #28a745; /* Button color on hover */
+}
+
+#close-popup:hover {
+    background-color: #6d4545; /* Button color on hover */
+}
