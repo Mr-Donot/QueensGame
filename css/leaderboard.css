@@ -83,3 +83,7 @@ button:hover {
 }
 
 /* ... other styles ... */
+
+nav>button{
+    display:none;
+}
