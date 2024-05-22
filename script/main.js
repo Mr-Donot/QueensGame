@@ -8,7 +8,7 @@ function fillColorSelectBox(){
     for (var colorName in colors){
         let optionBalise = document.createElement("option");
         optionBalise.value = colorName;
-        optionBalise.textContent = colors[colorName]["name"];
+        optionBalise.textContent = "Palette : " + colors[colorName]["name"];
         selector.appendChild(optionBalise);
     }
 }
