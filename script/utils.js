@@ -19,7 +19,7 @@ function createGrid(map){
             let divSquare = document.createElement("div");
             divSquare.id = "case-" + line + "-" + square;
             divSquare.classList.add("case");
-            divSquare.style.backgroundColor = color1[map["colorGrid"][line][square]];
+            divSquare.style.backgroundColor = currentColor[map["colorGrid"][line][square]];
             divLine.appendChild(divSquare);
             tempLine.push(0);
         }

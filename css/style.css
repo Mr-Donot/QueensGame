@@ -10,7 +10,7 @@
 }
 
 /* Style pour le sélecteur de carte */
-#mapSelector {
+#mapSelector, #colorSelector {
     padding: 10px;
     margin-right: 10px; /* Espace entre le sélecteur et le bouton */
     font-size: 1em;
@@ -40,6 +40,7 @@
 #chronometer {
     font-size: 1.5em; /* Increase the font size for better visibility */
     margin-left: 10px; /* Space to the left of the chronometer */
+    margin-right: 10px; /* Espace entre le sélecteur et le bouton */
     padding: 5px 10px; /* Padding inside the chronometer span */
     border: 1px solid #ccc; /* Border around the chronometer */
     border-radius: 5px; /* Rounded corners */
