@@ -106,6 +106,18 @@ const colors = {
         6: "#B0C4DE",  // Bleu clair
         7: "#D8BFD8",  // Thistle
         8: "#E6E6FA"   // Lavande
+    },
+    "color10": {
+        "name": "Donut",
+        0: "#FFB6C1",  // Rose clair
+        1: "#FFD700",  // Or
+        2: "#FFA07A",  // Saumon
+        3: "#FF69B4",  // Rose vif
+        4: "#B0E0E6",  // Bleu poudre
+        5: "#98FB98",  // Vert pâle
+        6: "#FF6347",  // Tomate
+        7: "#FFDAB9",  // Pêche
+        8: "#E6E6FA"   // Lavande
     }
     
 }
