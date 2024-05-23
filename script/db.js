@@ -35,5 +35,3 @@ function getFormattedDateTime() {
 
   return formattedDateTime;
 }
-
-document.querySelector("#save-button").addEventListener("click", saveWinInDB);
