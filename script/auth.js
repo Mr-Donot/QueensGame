@@ -35,7 +35,6 @@ async function register(){
     createUserWithEmailAndPassword(auth, email, password)
     .then(async function(){
         let user = auth.currentUser;
-        let db_ref = database.ref();
 
         let user_data = {
             "name":name,
@@ -62,8 +61,7 @@ async function login() {
     
     signInWithEmailAndPassword(auth, email, password)
     .then(async function() {
-      let user = auth.currentUser
-      let db_ref = database.ref()
+      let user = auth.currentUser;
 
       let user_data = {
         "last_login" : getFormattedDateTime()
