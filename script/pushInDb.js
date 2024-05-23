@@ -60,7 +60,7 @@ async function saveNewData(timer) {
     const db = getDatabase();
     
     try {
-        await set(ref(db, 'user/' + username + '/' + currentMap), { timer });
+        await set(ref(db, 'user/' + username + '/' + currentMap), { "timer":timer, "date": new Date().toDateString()});
         console.log("New timer saved successfully.");
         closePopup();
     } catch (error) {
