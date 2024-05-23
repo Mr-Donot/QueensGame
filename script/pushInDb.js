@@ -60,12 +60,28 @@ async function saveNewData(timer) {
     const db = getDatabase();
     
     try {
-        await set(ref(db, 'user/' + username + '/' + currentMap), { "timer":timer, "date": new Date().toDateString()});
+        await set(ref(db, 'user/' + username + '/' + currentMap), { "timer":timer, "date": getFormattedDateTime()});
         console.log("New timer saved successfully.");
         closePopup();
     } catch (error) {
         console.error("Error saving new timer:", error);
     }
+}
+
+function getFormattedDateTime() {
+
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const hour = String(now.getHours()).padStart(2, '0');
+    const minute = String(now.getMinutes()).padStart(2, '0');
+    const second = String(now.getSeconds()).padStart(2, '0');
+
+    const formattedDateTime = `${year}-${month}-${day}-${hour}-${minute}-${second}`;
+
+    return formattedDateTime;
 }
 
 document.querySelector("#save-button").addEventListener("click", saveWinInDB);
