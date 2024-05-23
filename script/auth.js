@@ -18,7 +18,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const auth = getAuth(app);
 
 
 document.querySelector("#button_register").addEventListener("click", register);
@@ -32,6 +31,8 @@ function register(){
     if (!(validate_email(email) && validate_password(password) && validate_name(name))){
         return;
     }
+    
+    const auth = getAuth(app);
     auth.createUserWithEmailAndPassword(email, password)
     .then(function(){
         let user = auth.currentUser;
@@ -59,6 +60,8 @@ function login() {
     if (!(validate_email(email) && validate_password(password))) {
       return
     }
+    
+    const auth = getAuth(app);
     auth.signInWithEmailAndPassword(email, password)
     .then(function() {
       let user = auth.currentUser
