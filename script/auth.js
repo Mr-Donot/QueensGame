@@ -3,6 +3,9 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.
 
 const auth = getAuth(app);
 
+document.querySelector("#button_register").addEventListener("click", register);
+document.querySelector("#button_login").addEventListener("click", login);
+
 function register(){
     let name = document.getElementById("signup_name").value;
     let email = document.getElementById("signup_email").value;
