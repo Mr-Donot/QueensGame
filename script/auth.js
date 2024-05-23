@@ -23,7 +23,7 @@ const auth = getAuth(app);
 document.querySelector("#button_register").addEventListener("click", register);
 document.querySelector("#button_login").addEventListener("click", login);
 
-function register(){
+async function register(){
     let name = document.getElementById("signup_name").value;
     let email = document.getElementById("signup_email").value;
     let password = document.getElementById("signup_password").value;
@@ -33,7 +33,7 @@ function register(){
     }
     
     createUserWithEmailAndPassword(auth, email, password)
-    .then(function(){
+    .then(async function(){
         let user = auth.currentUser;
         let db_ref = database.ref();
 
@@ -44,7 +44,7 @@ function register(){
             "last_login":getFormattedDateTime()
         }
 
-        db_ref.child("users/" + user.uid).set(user_data);
+        await set(ref(db, 'users/' + user.uid), user_data);
     })
     .catch(function(error){
         console.error(error);
@@ -52,7 +52,7 @@ function register(){
 
 }
 
-function login() {
+async function login() {
     let email = document.getElementById("signin_email").value;
     let password = document.getElementById("signin_password").value;
   
@@ -61,14 +61,16 @@ function login() {
     }
     
     signInWithEmailAndPassword(auth, email, password)
-    .then(function() {
+    .then(async function() {
       let user = auth.currentUser
       let db_ref = database.ref()
 
       let user_data = {
         "last_login" : getFormattedDateTime()
       }
-      db_ref.child('users/' + user.uid).update(user_data)  
+      await set(ref(db, 'users/' + user.uid), user_data);
+      window.location = "./";
+      console.log(user);
     })
     .catch(function(error) {
       console.error(error);
