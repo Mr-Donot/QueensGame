@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'inscription/connexion</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-auth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase-database.js"></script>
+    <script src="script/db.js" defer></script>
+    <script src="script/auth.js" defer></script>
+    <script src="script/anim_auth.js" defer></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Créer un compte</h1>
+                <input id="signup_name" type="text" placeholder="Nom" />
+                <input id="signup_email" type="email" placeholder="Email" />
+                <input id="signup_password" type="password" placeholder="Mot de passe" />
+                <button onclick="register()">S'inscrire</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Se connecter</h1>
+                <input id="signin_email" type="email" placeholder="Email" />
+                <input id="signin_password" type="password" placeholder="Mot de passe" />
+                <button onclick="login()">Connexion</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Bon retour !</h1>
+                    <p></p>
+                    <button class="ghost" id="signIn">Connexion</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Bonjour, ami!</h1>
+                    <p></p>
+                    <button class="ghost" id="signUp">S'inscrire</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
