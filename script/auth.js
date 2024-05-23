@@ -54,7 +54,7 @@ function login() {
 
 
 function validate_email(email){
-    let reg = /^[^@]+@\w+(\.\w+)+\w$/.test(str);
+    let reg = /^[^@]+@\w+(\.\w+)+\w$/;
     return reg.test(email);
 }
 function validate_password(password){
