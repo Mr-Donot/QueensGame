@@ -13,7 +13,7 @@ function register(){
     if (!(validate_email(email) && validate_password(password) && validate_name(name))){
         return;
     }
-    const auth = getAuth(app);
+    const auth = getAuth();
     auth.createUserWithEmailAndPassword(email, password)
     .then(function(){
         let user = auth.currentUser;
