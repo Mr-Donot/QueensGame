@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -15,79 +15,67 @@ const firebaseConfig = {
   measurementId: "G-9L5RKZ5P2R"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// Get references to Firebase services
 const database = getDatabase(app);
 const auth = getAuth(app);
 
 document.querySelector("#button_register").addEventListener("click", register);
 document.querySelector("#button_login").addEventListener("click", login);
 
-function register() {
-  let name = document.getElementById("signup_name").value;
-  let email = document.getElementById("signup_email").value;
-  let password = document.getElementById("signup_password").value;
+function register(){
+    let name = document.getElementById("signup_name").value;
+    let email = document.getElementById("signup_email").value;
+    let password = document.getElementById("signup_password").value;
 
-  if (!(validate_email(email) && validate_password(password) && validate_name(name))) {
-    return;
-  }
+    if (!(validate_email(email) && validate_password(password) && validate_name(name))){
+        return;
+    }
+    
+    auth.createUserWithEmailAndPassword(email, password)
+    .then(function(){
+        let user = auth.currentUser;
+        let db_ref = database.ref();
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      const dbRef = ref(database, `users/${user.uid}`);
+        let user_data = {
+            "name":name,
+            "email":email,
+            "password":password,
+            "last_login":getFormattedDateTime()
+        }
 
-      const userData = {
-        name: name,
-        email: email,
-        // Avoid storing plain text passwords. Implement hashing/encryption.
-        // password: password,
-        last_login: getFormattedDateTime(),
-      };
-
-      set(dbRef, userData) // Use set for initial data or creating new entries
-        .then(() => {
-          // User registration successful (handle success message/actions here)
-        })
-        .catch((error) => {
-          console.error("Error writing user data to database:", error);
-        });
+        db_ref.child("users/" + user.uid).set(user_data);
     })
-    .catch((error) => {
-      console.error("Error creating user:", error);
-    });
+    .catch(function(error){
+        console.error(error);
+    })
+
 }
 
 function login() {
-  let email = document.getElementById("signin_email").value;
-  let password = document.getElementById("signin_password").value;
+    let email = document.getElementById("signin_email").value;
+    let password = document.getElementById("signin_password").value;
+  
+    if (!(validate_email(email) && validate_password(password))) {
+      return
+    }
+    
+    auth.signInWithEmailAndPassword(email, password)
+    .then(function() {
+      let user = auth.currentUser
+      let db_ref = database.ref()
 
-  if (!(validate_email(email) && validate_password(password))) {
-    return;
-  }
-
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      const dbRef = ref(database, `users/${user.uid}`);
-
-      const userData = {
-        last_login: getFormattedDateTime(),
-      };
-
-      update(dbRef, userData) // Use update for modifying existing entries
-        .then(() => {
-          // User login successful (handle success message/actions here)
-        })
-        .catch((error) => {
-          console.error("Error updating user data:", error);
-        });
+      let user_data = {
+        "last_login" : getFormattedDateTime()
+      }
+      db_ref.child('users/' + user.uid).update(user_data)  
     })
-    .catch((error) => {
-      console.error("Error signing in:", error);
-    });
-}
+    .catch(function(error) {
+      console.error(error);
+    })
+
+}  
+
 
 function validate_email(email){
     let reg = /^[^@]+@\w+(\.\w+)+\w$/;
