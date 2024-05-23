@@ -1,3 +1,7 @@
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+
+
+const auth = getAuth(app);
 
 function register(){
     let name = document.getElementById("signup_name").value;
