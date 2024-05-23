@@ -69,3 +69,5 @@ async function saveNewData(timer) {
 }
 
 
+
+document.querySelector("#save-button").addEventListener("click", saveWinInDB);

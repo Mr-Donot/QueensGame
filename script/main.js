@@ -3,7 +3,7 @@ let blocks = {};
 let currentMap = "";
 let currentColor = colors["color1"];
 
-document.querySelector("#save-button").addEventListener("click", saveWinInDB);
+
 
 function fillColorSelectBox(){
     let selector = document.querySelector("#colorSelector");
