@@ -1,7 +1,7 @@
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 
 
-const auth = getAuth(app);
+const auth = getAuth();
 
 document.querySelector("#button_register").addEventListener("click", register);
 document.querySelector("#button_login").addEventListener("click", login);
