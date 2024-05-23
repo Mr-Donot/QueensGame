@@ -1,7 +1,6 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
 
 
-const auth = getAuth();
 
 document.querySelector("#button_register").addEventListener("click", register);
 document.querySelector("#button_login").addEventListener("click", login);
@@ -14,7 +13,7 @@ function register(){
     if (!(validate_email(email) && validate_password(password) && validate_name(name))){
         return;
     }
-
+    const auth = getAuth(app);
     auth.createUserWithEmailAndPassword(email, password)
     .then(function(){
         let user = auth.currentUser;
@@ -42,7 +41,7 @@ function login() {
     if (!(validate_email(email) && validate_password(password))) {
       return
     }
-  
+    const auth = getAuth(app);
     auth.signInWithEmailAndPassword(email, password)
     .then(function() {
       let user = auth.currentUser
