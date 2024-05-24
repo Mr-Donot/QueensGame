@@ -136,16 +136,12 @@ function getMapByName(name) {
     return null; // Return null if map name not found
 }
 
-function convertTimeToSeconds(timer) {
-    if (timer == null) return 0;
-    if(timer.length == 12){
-        const [hms, ms] = timer.split('.');
-        const [hours, minutes, seconds] = hms.split(':').map(Number);
-        const milliseconds = Number(ms);
-    }
-    else{
-        const [hours, minutes, seconds, ms] = [timer.split(':').map(Number), 0];
-    }
-
+function convertTimeToSeconds(time) {
+    const parts = time.split(':');
+    const secondsParts = parts[2].split('.');
+    const hours = parseInt(parts[0], 10);
+    const minutes = parseInt(parts[1], 10);
+    const seconds = parseInt(secondsParts[0], 10);
+    const milliseconds = secondsParts[1] ? parseInt(secondsParts[1], 10) : 0;
     return hours * 3600 + minutes * 60 + seconds + milliseconds / 1000;
 }
