@@ -69,7 +69,7 @@ async function login() {
       var user_cred = userCredential.user;
       // Store user information in local storage
       localStorage.setItem('user', JSON.stringify(user_cred));
-      localStorage.setItem('username', JSON.stringify({"username":user.name}));
+      localStorage.setItem('username', JSON.stringify({"username":user}));
       window.location = "./";
       console.log(user);
     })

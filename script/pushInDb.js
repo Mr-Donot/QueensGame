@@ -13,7 +13,7 @@ const firebaseConfig = {
 };
 
 document.getElementById("username").innerHTML = JSON.parse(localStorage.getItem('username'))
-
+console.log(JSON.parse(localStorage.getItem('username')))
 async function saveWinInDB() {
     var username = document.querySelector("#username").value;
     if (username == "") {
