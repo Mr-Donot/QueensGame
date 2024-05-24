@@ -137,9 +137,9 @@ document.getElementById('mapSelect').addEventListener('change', async (event) =>
 });
 
 function getMapByName(name) {
-    for (let mapId in maps) {
-        if (maps[mapId].name === name) {
-            return maps[mapId];
+    for (let map_id in maps) {
+        if (maps[map_id].name === name) {
+            return map_id;
         }
     }
     return null; // Return null if map name not found
