@@ -45,7 +45,7 @@ async function getMapLeaderboard(mapId) {
                 if (maps && maps[mapId] && maps[mapId].timer) { // Add check for 'time' property
                     map_lb_values.push({
                         username: username,
-                        time: maps[mapId].timer
+                        timer: maps[mapId].timer
                     });
                 }
             });
