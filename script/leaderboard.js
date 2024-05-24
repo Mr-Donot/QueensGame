@@ -111,7 +111,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     document.getElementById('mapSelect').addEventListener('change', async (event) => {
-        await createMapLeaderboard(event.target.value);
+        const mapname = event.target.value;
+        const mapId = getMapByName(mapname);
+        await createMapLeaderboard(mapId);
     });
 
     // Initial creation of the global leaderboard
