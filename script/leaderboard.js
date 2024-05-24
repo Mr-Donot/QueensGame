@@ -153,9 +153,15 @@ function getMapByName(name) {
     return null; // Return null if map name not found
 }
 
-function convertTimeToSeconds(time) {
-    const [hms, ms] = time.split('.');
-    const [hours, minutes, seconds] = hms.split(':').map(Number);
-    const milliseconds = Number(ms);
+function convertTimeToSeconds(timer) {
+    if(timer.length == 12){
+        const [hms, ms] = timer.split('.');
+        const [hours, minutes, seconds] = hms.split(':').map(Number);
+        const milliseconds = Number(ms);
+    }
+    else{
+        const [hours, minutes, seconds, ms] = [timer.split(':').map(Number), 0];
+    }
+
     return hours * 3600 + minutes * 60 + seconds + milliseconds / 1000;
 }
