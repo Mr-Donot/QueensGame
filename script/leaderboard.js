@@ -14,7 +14,7 @@ async function getUsersMapCount() {
             // Parcourir tous les utilisateurs et compter leurs cartes
             Object.keys(usersData).forEach(userID => {
                 const username = usersData[userID]["name"];
-                const maps = usersData[username]["maps"];
+                const maps = usersData[userID]["maps"];
                 userMapCounts[username] = Object.keys(maps).length;
             });
 
