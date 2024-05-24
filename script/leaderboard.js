@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', async function() {
         const mapLeaderboard = await getMapLeaderboard(mapId);
         mapLeaderboardElement.innerHTML = '';
         mapLeaderboard.sort((a, b) => {
-            const timeA = convertTimeToSeconds(a.time);
-            const timeB = convertTimeToSeconds(b.time);
+            const timeA = convertTimeToSeconds(a.timer);
+            const timeB = convertTimeToSeconds(b.timer);
             return timeA - timeB;
         });
         mapLeaderboard.forEach(({ username, time }) => {
