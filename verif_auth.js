@@ -19,17 +19,16 @@ const app = initializeApp(firebaseConfig);
 //const db = getDatabase(app);
 const auth = getAuth(app);
 
-auth.onAuthStateChanged(user => {
-    if (user) {
-        // User is signed in, get user details
-        console.log("User ID: " + user.uid);
-        console.log("User Email: " + user.email);
-        // You can display this information on your page
-        //document.getElementById("user-info").textContent = `Logged in as: ${user.email}`;
-    } else {
-        // No user is signed in
-        console.log("No user is signed in.");
-        // Redirect to login page or show a message
-        window.location.href = "./auth.html"; // Redirect to login page if not logged in
-    }
-})
+
+if (auth.currentUser) {
+    // User is signed in, get user details
+    console.log("User ID: " + user.uid);
+    console.log("User Email: " + user.email);
+    // You can display this information on your page
+    //document.getElementById("user-info").textContent = `Logged in as: ${user.email}`;
+} else {
+    // No user is signed in
+    console.log("No user is signed in.");
+    // Redirect to login page or show a message
+    window.location.href = "./auth.html"; // Redirect to login page if not logged in
+}
