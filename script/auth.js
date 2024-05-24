@@ -70,9 +70,10 @@ async function login() {
       // Store user information in local storage
       localStorage.setItem('user', JSON.stringify(user_cred));
       const username = await getUsernameByEmail(email);
+      console.log(username);
       localStorage.setItem('username', JSON.stringify({"username":username}));
-      window.location = "./";
-      console.log(user);
+      //window.location = "./";
+
     })
     .catch(function(error) {
       console.error(error);
