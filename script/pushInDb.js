@@ -28,7 +28,7 @@ const db = getDatabase();
   return null;  // Or handle the case where the username is not found
 }
 var user = JSON.parse(localStorage.getItem('user'));
-document.getElementById("username").innerHTML = getUsernameByEmail(user.email);
+document.getElementById("username").innerHTML = await getUsernameByEmail(user.email);
 
 async function saveWinInDB() {
     var username = document.querySelector("#username").value;
