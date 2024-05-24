@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', async function() {
             const timeB = convertTimeToSeconds(b.timer);
             return timeA - timeB;
         });
-        mapLeaderboard.forEach(({ username, time }) => {
+        mapLeaderboard.forEach(({ username, timer }) => {
             const userDiv = document.createElement('div');
             userDiv.className = 'user';
-            userDiv.innerHTML = `<span class="username">${username}</span><span class="time">${time}</span>`;
+            userDiv.innerHTML = `<span class="username">${username}</span><span class="time">${timer}</span>`;
             mapLeaderboardElement.appendChild(userDiv);
         });
     }
