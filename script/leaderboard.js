@@ -85,6 +85,11 @@ document.addEventListener('DOMContentLoaded', async function() {
         const mapLeaderboardElement = document.getElementById('mapLeaderboard');
         const mapLeaderboard = await getMapLeaderboard(mapId);
         mapLeaderboardElement.innerHTML = '';
+        mapLeaderboard.sort((a, b) => {
+            const timeA = convertTimeToSeconds(a.time);
+            const timeB = convertTimeToSeconds(b.time);
+            return timeA - timeB;
+        });
         mapLeaderboard.forEach(({ username, time }) => {
             const userDiv = document.createElement('div');
             userDiv.className = 'user';
@@ -144,4 +149,9 @@ function getMapByName(name) {
         }
     }
     return null; // Return null if map name not found
+}
+
+function convertTimeToSeconds(time) {
+    const [hours, minutes, seconds] = time.split(':').map(Number);
+    return hours * 3600 + minutes * 60 + seconds;
 }
