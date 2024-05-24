@@ -67,6 +67,9 @@ async function login() {
         "last_login" : getFormattedDateTime()
       }
       await set(ref(db, 'users/' + user.uid), user_data);
+      var user_cred = userCredential.user;
+      // Store user information in local storage
+      localStorage.setItem('user', JSON.stringify(user_cred));
       window.location = "./";
       console.log(user);
     })
