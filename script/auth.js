@@ -67,9 +67,9 @@ async function login() {
       }
       await update(ref(db, 'users/' + user.uid), user_data);
       var user_cred = userCredential.user;
-      userCredential.username = user.name;
       // Store user information in local storage
       localStorage.setItem('user', JSON.stringify(user_cred));
+      localStorage.setItem('username', JSON.stringify({"username":user.name}));
       window.location = "./";
       console.log(user);
     })

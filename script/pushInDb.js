@@ -12,23 +12,7 @@ const firebaseConfig = {
   measurementId: "G-9L5RKZ5P2R"
 };
 
-
-
-async function getUsernameByEmail(email) {
-const db = getDatabase();
-  const usersRef = ref(db, 'users');
-  const snapshot = await get(usersRef);
-  const users = snapshot.val();
-
-  for (let uid in users) {
-      if (users[uid].email === email) {
-          return users[uid].username;
-      }
-  }
-  return null;  // Or handle the case where the username is not found
-}
-var user = JSON.parse(localStorage.getItem('user'));
-document.getElementById("username").innerHTML = await getUsernameByEmail(user.email);
+document.getElementById("username").innerHTML = JSON.parse(localStorage.getItem('username'))
 
 async function saveWinInDB() {
     var username = document.querySelector("#username").value;
