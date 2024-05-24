@@ -15,7 +15,9 @@ async function getUsersMapCount() {
             Object.keys(usersData).forEach(userID => {
                 const username = usersData[userID]["name"];
                 const maps = usersData[userID]["maps"];
-                userMapCounts[username] = Object.keys(maps).length;
+                if (maps != null){
+                    userMapCounts[username] = Object.keys(maps).length;
+                }
             });
 
             return userMapCounts;

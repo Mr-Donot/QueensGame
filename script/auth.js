@@ -39,7 +39,8 @@ async function register(){
         let user_data = {
             "name":name,
             "email":email,
-            "last_login":getFormattedDateTime()
+            "last_login":getFormattedDateTime(),
+            "maps":{},
         }
 
         await set(ref(db, 'users/' + user.uid), user_data);
