@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
 import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -20,5 +20,16 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 auth.onAuthStateChanged(user => {
-    console.log(user);
+    if (user) {
+        // User is signed in, get user details
+        console.log("User ID: " + user.uid);
+        console.log("User Email: " + user.email);
+        // You can display this information on your page
+        //document.getElementById("user-info").textContent = `Logged in as: ${user.email}`;
+    } else {
+        // No user is signed in
+        console.log("No user is signed in.");
+        // Redirect to login page or show a message
+        window.location.href = "./auth.html"; // Redirect to login page if not logged in
+    }
 })
