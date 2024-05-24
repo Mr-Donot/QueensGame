@@ -12,7 +12,8 @@ async function getUsersMapCount() {
             const userMapCounts = {};
 
             // Parcourir tous les utilisateurs et compter leurs cartes
-            Object.keys(usersData).forEach(username => {
+            Object.keys(usersData).forEach(userID => {
+                const username = usersData[userID]["name"];
                 const maps = usersData[username]["maps"];
                 userMapCounts[username] = Object.keys(maps).length;
             });
@@ -27,12 +28,6 @@ async function getUsersMapCount() {
         return {};
     }
 }
-
-getUsersMapCount().then(userMapCounts => {
-    console.log(userMapCounts); // Affiche le dictionnaire résultant
-});
-
-
 
 document.addEventListener('DOMContentLoaded', async function() {
     // Example users data - this would be replaced with data from your actual source
