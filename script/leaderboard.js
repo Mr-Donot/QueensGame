@@ -143,7 +143,7 @@ function fillMapLeaderboardSelectBox(){
 document.getElementById('mapSelect').addEventListener('change', async (event) => {
     const mapId = event.target.value;
     if (mapId) {
-        await getMapLeaderboard(mapId);
+        await createMapLeaderboard(mapId);
     } else {
         // Clear map leaderboard if no map selected
         const mapLeaderboardElement = document.getElementById('mapLeaderboard');
