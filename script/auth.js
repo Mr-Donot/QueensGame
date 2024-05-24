@@ -69,7 +69,6 @@ async function login() {
       // Store user information in local storage
       localStorage.setItem('user', JSON.stringify(user_cred));
       const username = await getUsernameByEmail(email);
-      console.log(username);
       localStorage.setItem('username', JSON.stringify({"username":username}));
       //window.location = "./";
 
@@ -86,9 +85,8 @@ async function getUsernameByEmail(email) {
     const users = snapshot.val();
   
     for (let uid in users) {
-        console.log(users[uid])
         if (users[uid].email === email) {
-            return users[uid].username;
+            return users[uid].name;
         }
     }
     return null;
