@@ -132,9 +132,7 @@ function fillMapLeaderboardSelectBox(){
 }
 
 document.getElementById('mapSelect').addEventListener('change', async (event) => {
-    const mapname = event.target.value;
-    const mapId = getMapByName(mapname);
-    console.log("mapId", mapId);
+    const mapId = event.target.value;
     if (mapId) {
         await getMapLeaderboard(mapId);
     } else {
