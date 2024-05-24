@@ -42,7 +42,7 @@ async function getMapLeaderboard(mapId) {
             Object.keys(usersData).forEach(userID => {
                 const username = usersData[userID]["name"];
                 const maps = usersData[userID]["maps"];
-                if (maps && maps[mapId]) {
+                if (maps && maps[mapId] && maps[mapId].time) { // Add check for 'time' property
                     mapLeaderboard.push({
                         username: username,
                         time: maps[mapId].time
@@ -51,7 +51,7 @@ async function getMapLeaderboard(mapId) {
             });
 
             // Sort by time (assuming format is "HH:MM:SS")
-            mapLeaderboard.sort((a, b) => a.time.localeCompare(b.time));
+            mapLeaderboard.sort((a, b) => (a.time && b.time) ? a.time.localeCompare(b.time) : 0); // Check if 'time' exists before comparing
             return mapLeaderboard;
         } else {
             console.log("No data available");
@@ -62,6 +62,7 @@ async function getMapLeaderboard(mapId) {
         return [];
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', async function() {
     const users = await getUsersMapCount();
