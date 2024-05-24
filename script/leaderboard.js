@@ -2,7 +2,7 @@ import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.0.0/
 
 async function getUsersMapCount() {
     const db = getDatabase();
-    const usersRef = ref(db, 'user/');
+    const usersRef = ref(db, 'users/');
 
     try {
         // Récupérer les utilisateurs et leurs cartes
@@ -13,7 +13,7 @@ async function getUsersMapCount() {
 
             // Parcourir tous les utilisateurs et compter leurs cartes
             Object.keys(usersData).forEach(username => {
-                const maps = usersData[username];
+                const maps = usersData[username]["maps"];
                 userMapCounts[username] = Object.keys(maps).length;
             });
 
