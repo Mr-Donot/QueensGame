@@ -39,7 +39,6 @@ async function register(){
         let user_data = {
             "name":name,
             "email":email,
-            "password":password,
             "last_login":getFormattedDateTime()
         }
 
@@ -62,13 +61,13 @@ async function login() {
     signInWithEmailAndPassword(auth, email, password)
     .then(async function(userCredential) {
       let user = auth.currentUser;
-
+      console.log(user.name);
       let user_data = {
         "last_login" : getFormattedDateTime()
       }
       await update(ref(db, 'users/' + user.uid), user_data);
       var user_cred = userCredential.user;
-      userCredential["username"] = user.name;
+      userCredential.username = user.name;
       // Store user information in local storage
       localStorage.setItem('user', JSON.stringify(user_cred));
       window.location = "./";
