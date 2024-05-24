@@ -23,7 +23,7 @@ async function saveWinInDB() {
 
     var timer = document.querySelector("#chronometer").innerHTML;
     const db = getDatabase();
-    const userRef = ref(db, 'users/' + username + '/' + currentMap);
+    const userRef = ref(db, 'users/' + JSON.parse(localStorage.getItem('user')).uid + '/maps/' + currentMap);
 
     try {
         const snapshot = await get(userRef);
@@ -74,7 +74,7 @@ async function saveNewData(timer) {
     const db = getDatabase();
     
     try {
-        await set(ref(db, 'users/' + username + '/' + currentMap), { "timer":timer, "date": getFormattedDateTime()});
+        await set(ref(db, 'users/' + JSON.parse(localStorage.getItem('user')).uid + '/maps/' + currentMap), { "timer":timer, "date": getFormattedDateTime()});
         console.log("New timer saved successfully.");
         closePopup();
     } catch (error) {
