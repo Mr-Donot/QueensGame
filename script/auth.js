@@ -60,7 +60,7 @@ async function login() {
     }
     
     signInWithEmailAndPassword(auth, email, password)
-    .then(async function() {
+    .then(async function(userCredential) {
       let user = auth.currentUser;
 
       let user_data = {
