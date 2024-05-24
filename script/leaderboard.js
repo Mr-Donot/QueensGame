@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 function fillMapLeaderboardSelectBox(){
     let selector = document.querySelector("#mapSelect");
+    selector.innerHTML = "";
     for (var mapName in maps){
         let optionBalise = document.createElement("option");
         optionBalise.value = mapName;
@@ -123,3 +124,13 @@ function fillMapLeaderboardSelectBox(){
     }
 }
 
+document.getElementById('mapSelect').addEventListener('change', async (event) => {
+    const mapId = event.target.value;
+    if (mapId) {
+        await getMapLeaderboard(mapId);
+    } else {
+        // Clear map leaderboard if no map selected
+        const mapLeaderboardElement = document.getElementById('mapLeaderboard');
+        mapLeaderboardElement.innerHTML = '';
+    }
+});
