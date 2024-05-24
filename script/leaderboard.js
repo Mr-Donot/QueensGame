@@ -50,8 +50,17 @@ async function getMapLeaderboard(mapId) {
                 }
             });
 
-            // Sort by time (assuming format is "HH:MM:SS")
-            mapLeaderboard.sort((a, b) => (a.timer && b.timer) ? a.time.localeCompare(b.timer) : 0); // Check if 'time' exists before comparing
+            mapLeaderboard.sort((a, b) => {
+                if (!(a.timer && b.timer)) {
+                    return 0;
+                }else{
+                    sa = convertTimeToSeconds(a);
+                    sb = convertTimeToSeconds(b);
+                    return a<b;
+                }
+            }
+            );
+            console.log(mapLeaderboard);
             return mapLeaderboard;
         } else {
             console.log("No data available");
