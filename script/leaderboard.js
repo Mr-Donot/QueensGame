@@ -106,6 +106,16 @@ document.addEventListener('DOMContentLoaded', async function() {
             mapLeaderboardElement.appendChild(userDiv);
         });
     }
+    document.getElementById('mapSelect').addEventListener('change', async (event) => {
+        const mapId = event.target.value;
+        if (mapId) {
+            await createMapLeaderboard(mapId);
+        } else {
+            // Clear map leaderboard if no map selected
+            const mapLeaderboardElement = document.getElementById('mapLeaderboard');
+            mapLeaderboardElement.innerHTML = '';
+        }
+    });
 
     document.getElementById('navButton1').addEventListener('click', () => {
         document.querySelector('.leaderboard-container').style.display = 'block';
@@ -140,16 +150,7 @@ function fillMapLeaderboardSelectBox(){
     }
 }
 
-document.getElementById('mapSelect').addEventListener('change', async (event) => {
-    const mapId = event.target.value;
-    if (mapId) {
-        await createMapLeaderboard(mapId);
-    } else {
-        // Clear map leaderboard if no map selected
-        const mapLeaderboardElement = document.getElementById('mapLeaderboard');
-        mapLeaderboardElement.innerHTML = '';
-    }
-});
+
 
 function getMapByName(name) {
     for (let map_id in maps) {
