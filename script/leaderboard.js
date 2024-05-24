@@ -162,6 +162,7 @@ function getMapByName(name) {
 }
 
 function convertTimeToSeconds(timer) {
+    if (timer == null) return 0;
     if(timer.length == 12){
         const [hms, ms] = timer.split('.');
         const [hours, minutes, seconds] = hms.split(':').map(Number);
