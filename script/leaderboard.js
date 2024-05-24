@@ -122,3 +122,35 @@ function fillMapLeaderboardSelectBox(){
         selector.appendChild(optionBalise);
     }
 }
+
+function populateMapSelect(usersData) {
+    const mapSelect = document.getElementById('mapSelect');
+    const allMaps = new Set();
+
+    // Collect all map IDs
+    Object.keys(usersData).forEach(userID => {
+        const maps = usersData[userID]["maps"];
+        if (maps) {
+            Object.keys(maps).forEach(mapId => {
+                allMaps.add(mapId);
+            });
+        }
+    });
+
+    // Clear previous options
+    mapSelect.innerHTML = '';
+
+    // Add default option
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.text = 'Choose a map';
+    mapSelect.appendChild(defaultOption);
+
+    // Populate select options
+    allMaps.forEach(mapId => {
+        const option = document.createElement('option');
+        option.value = mapId;
+        option.text = mapId;
+        mapSelect.appendChild(option);
+    });
+}
