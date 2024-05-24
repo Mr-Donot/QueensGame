@@ -152,6 +152,8 @@ function getMapByName(name) {
 }
 
 function convertTimeToSeconds(time) {
-    const [hours, minutes, seconds] = time.split(':').map(Number);
-    return hours * 3600 + minutes * 60 + seconds;
+    const [hms, ms] = time.split('.');
+    const [hours, minutes, seconds] = hms.split(':').map(Number);
+    const milliseconds = Number(ms);
+    return hours * 3600 + minutes * 60 + seconds + milliseconds / 1000;
 }
