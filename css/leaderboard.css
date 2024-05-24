@@ -59,11 +59,16 @@ nav button {
 }
 
 /* Leaderboard item styles */
-.leaderboard-item {
+.user {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #eee;
     padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.user span {
+    flex: 1;
+    text-align: center;
 }
 
 /* Map leaderboard container styles */
