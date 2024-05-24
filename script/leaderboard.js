@@ -42,16 +42,16 @@ async function getMapLeaderboard(mapId) {
             Object.keys(usersData).forEach(userID => {
                 const username = usersData[userID]["name"];
                 const maps = usersData[userID]["maps"];
-                if (maps && maps[mapId] && maps[mapId].time) { // Add check for 'time' property
+                if (maps && maps[mapId] && maps[mapId].timer) { // Add check for 'time' property
                     mapLeaderboard.push({
                         username: username,
-                        time: maps[mapId].time
+                        time: maps[mapId].timer
                     });
                 }
             });
 
             // Sort by time (assuming format is "HH:MM:SS")
-            mapLeaderboard.sort((a, b) => (a.time && b.time) ? a.time.localeCompare(b.time) : 0); // Check if 'time' exists before comparing
+            mapLeaderboard.sort((a, b) => (a.timer && b.timer) ? a.time.localeCompare(b.timer) : 0); // Check if 'time' exists before comparing
             return mapLeaderboard;
         } else {
             console.log("No data available");
@@ -127,6 +127,7 @@ function fillMapLeaderboardSelectBox(){
 document.getElementById('mapSelect').addEventListener('change', async (event) => {
     const mapname = event.target.value;
     const mapId = getMapByName(mapname);
+    console.log("mapId", mapId);
     if (mapId) {
         await getMapLeaderboard(mapId);
     } else {
