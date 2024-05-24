@@ -44,6 +44,10 @@ async function register(){
         }
 
         await set(ref(db, 'users/' + user.uid), user_data);
+        container.classList.remove('right-panel-active');
+        document.getElementById("signup_name").value = "";
+        document.getElementById("signup_email").value = "";
+        document.getElementById("signup_password").value = "";
     })
     .catch(function(error){
         console.error(error);
