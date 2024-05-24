@@ -12,8 +12,9 @@ const firebaseConfig = {
   measurementId: "G-9L5RKZ5P2R"
 };
 
-document.getElementById("username").innerHTML = JSON.parse(localStorage.getItem('username'))
 console.log(JSON.parse(localStorage.getItem('username')))
+document.getElementById("username").innerHTML = JSON.parse(localStorage.getItem('username')).username;
+
 async function saveWinInDB() {
     var username = document.querySelector("#username").value;
     if (username == "") {

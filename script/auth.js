@@ -69,7 +69,8 @@ async function login() {
       var user_cred = userCredential.user;
       // Store user information in local storage
       localStorage.setItem('user', JSON.stringify(user_cred));
-      localStorage.setItem('username', JSON.stringify({"username":user}));
+      const username = await getUsernameByEmail(email);
+      localStorage.setItem('username', JSON.stringify({"username":username}));
       window.location = "./";
       console.log(user);
     })
@@ -77,8 +78,20 @@ async function login() {
       console.error(error);
     })
 
-}  
+}
 
+async function getUsernameByEmail(email) {
+    const usersRef = ref(db, 'users');
+    const snapshot = await get(usersRef);
+    const users = snapshot.val();
+  
+    for (let uid in users) {
+        if (users[uid].email === email) {
+            return users[uid].username;
+        }
+    }
+    return null;
+}
 
 function validate_email(email){
     let reg = /^[^@]+@\w+(\.\w+)+\w$/;
