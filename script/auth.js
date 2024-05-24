@@ -70,7 +70,7 @@ async function login() {
       localStorage.setItem('user', JSON.stringify(user_cred));
       const username = await getUsernameByEmail(email);
       localStorage.setItem('username', JSON.stringify({"username":username}));
-      //window.location = "./";
+      window.location = "./";
 
     })
     .catch(function(error) {
