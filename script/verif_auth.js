@@ -29,6 +29,7 @@ if (auth.currentUser) {
 } else {
     // No user is signed in
     console.log("No user is signed in.");
+    console.log(auth);
     // Redirect to login page or show a message
-    window.location.href = "./auth.html"; // Redirect to login page if not logged in
+    //window.location.href = "./auth.html"; // Redirect to login page if not logged in
 }
