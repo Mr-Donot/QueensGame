@@ -49,18 +49,6 @@ async function getMapLeaderboard(mapId) {
                     });
                 }
             });
-
-            mapLeaderboard.sort((a, b) => {
-                if (!(a.timer && b.timer)) {
-                    return 0;
-                }else{
-                    sa = convertTimeToSeconds(a);
-                    sb = convertTimeToSeconds(b);
-                    return a<b;
-                }
-            }
-            );
-            console.log(mapLeaderboard);
             return mapLeaderboard;
         } else {
             console.log("No data available");
