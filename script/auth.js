@@ -61,7 +61,6 @@ async function login() {
     signInWithEmailAndPassword(auth, email, password)
     .then(async function(userCredential) {
       let user = auth.currentUser;
-      console.log(user.name);
       let user_data = {
         "last_login" : getFormattedDateTime()
       }
@@ -87,6 +86,7 @@ async function getUsernameByEmail(email) {
     const users = snapshot.val();
   
     for (let uid in users) {
+        console.log(users[uid])
         if (users[uid].email === email) {
             return users[uid].username;
         }
