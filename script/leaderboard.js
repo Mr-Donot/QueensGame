@@ -37,19 +37,19 @@ async function getMapLeaderboard(mapId) {
         const snapshot = await get(usersRef);
         if (snapshot.exists()) {
             const usersData = snapshot.val();
-            const mapLeaderboard = [];
+            const map_lb_values = [];
 
             Object.keys(usersData).forEach(userID => {
                 const username = usersData[userID]["name"];
                 const maps = usersData[userID]["maps"];
                 if (maps && maps[mapId] && maps[mapId].timer) { // Add check for 'time' property
-                    mapLeaderboard.push({
+                    map_lb_values.push({
                         username: username,
                         time: maps[mapId].timer
                     });
                 }
             });
-            return mapLeaderboard;
+            return map_lb_values;
         } else {
             console.log("No data available");
             return [];
@@ -108,8 +108,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     document.getElementById('mapSelect').addEventListener('change', async (event) => {
-        const mapname = event.target.value;
-        const mapId = getMapByName(mapname);
+        const mapId = event.target.value;
         await createMapLeaderboard(mapId);
     });
 
@@ -127,8 +126,6 @@ function fillMapLeaderboardSelectBox(){
         selector.appendChild(optionBalise);
     }
 }
-
-
 
 function getMapByName(name) {
     for (let map_id in maps) {
