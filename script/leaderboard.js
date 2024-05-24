@@ -125,7 +125,8 @@ function fillMapLeaderboardSelectBox(){
 }
 
 document.getElementById('mapSelect').addEventListener('change', async (event) => {
-    const mapId = event.target.value;
+    const mapname = event.target.value;
+    const mapId = getMapByName(mapname);
     if (mapId) {
         await getMapLeaderboard(mapId);
     } else {
@@ -134,3 +135,12 @@ document.getElementById('mapSelect').addEventListener('change', async (event) =>
         mapLeaderboardElement.innerHTML = '';
     }
 });
+
+function getMapByName(name) {
+    for (let mapId in maps) {
+        if (maps[mapId].name === name) {
+            return maps[mapId];
+        }
+    }
+    return null; // Return null if map name not found
+}
