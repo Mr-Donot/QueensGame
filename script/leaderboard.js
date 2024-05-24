@@ -78,28 +78,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         });
     }
 
-    function populateMapSelect() {
-        const mapSelect = document.getElementById('mapSelect');
-        const allMaps = new Set();
-
-        // Collect all map IDs
-        Object.keys(usersData).forEach(userID => {
-            const maps = usersData[userID]["maps"];
-            if (maps) {
-                Object.keys(maps).forEach(mapId => {
-                    allMaps.add(mapId);
-                });
-            }
-        });
-
-        // Populate select options
-        allMaps.forEach(mapId => {
-            const option = document.createElement('option');
-            option.value = mapId;
-            option.text = mapId;
-            mapSelect.appendChild(option);
-        });
-    }
+    fillMapLeaderboardSelectBox();
 
     async function createMapLeaderboard(mapId) {
         const mapLeaderboardElement = document.getElementById('mapLeaderboard');
