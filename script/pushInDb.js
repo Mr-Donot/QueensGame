@@ -1,4 +1,33 @@
 import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBmqcJVph_jsTZVBCt2tChGFlqia6jB-o4",
+  authDomain: "test-queens-game.firebaseapp.com",
+  databaseURL: "https://test-queens-game-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "test-queens-game",
+  storageBucket: "test-queens-game.appspot.com",
+  messagingSenderId: "423803906034",
+  appId: "1:423803906034:web:d2804f284c0175874f2d6b",
+  measurementId: "G-9L5RKZ5P2R"
+};
+
+
+
+async function getUsernameByEmail(email) {
+const db = getDatabase();
+  const usersRef = ref(db, 'users');
+  const snapshot = await get(usersRef);
+  const users = snapshot.val();
+
+  for (let uid in users) {
+      if (users[uid].email === email) {
+          return users[uid].username;
+      }
+  }
+  return null;  // Or handle the case where the username is not found
+}
+document.getElementById("username").innerHTML = getUsernameByEmail(user.email);
 
 async function saveWinInDB() {
     var username = document.querySelector("#username").value;
