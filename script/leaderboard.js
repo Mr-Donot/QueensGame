@@ -132,3 +132,13 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Initial creation of the global leaderboard
     createLeaderboard(users);
 });
+
+function fillMapLeaderboardSelectBox(){
+    let selector = document.querySelector("#mapSelect");
+    for (var mapName in maps){
+        let optionBalise = document.createElement("option");
+        optionBalise.value = mapName;
+        optionBalise.textContent = maps[mapName]["name"];
+        selector.appendChild(optionBalise);
+    }
+}
