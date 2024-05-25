@@ -8,8 +8,8 @@ function createGrid(map){
     grid.style.gridTemplateRows = `repeat(${caseNumber}, 1fr)`;
     grid.style.gridTemplateColumns = `repeat(${caseNumber}, 1fr)`;
     grid.style.gap = "" + (15 - caseNumber > 0 ? 15-caseNumber : 1) + "px";
-    grid.style.width = "" + caseNumber*60 + "px";
-    grid.style.height = "" + caseNumber*60 + "px";
+    grid.style.width = (window.innerWidth > 768 ? "450px": "700px");
+    grid.style.height = (window.innerWidth > 768 ? "450px": "700px");
     for (let line=0 ; line < caseNumber ; line++){
         let divLine = document.createElement("div");
         divLine.id = "line-" + line;
