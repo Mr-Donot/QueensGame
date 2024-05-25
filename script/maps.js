@@ -1,6 +1,6 @@
 const maps = {
     "map1": {
-        "name": "5x5 : random",
+        "name": "Map n\u00b0 1",
         "caseNumber": 5,
         "colorGrid": [
             [
@@ -41,7 +41,7 @@ const maps = {
         ]
     },
     "map2": {
-        "name": "6x6 : random",
+        "name": "Map n\u00b0 2",
         "caseNumber": 6,
         "colorGrid": [
             [
@@ -95,7 +95,7 @@ const maps = {
         ]
     },
     "map3": {
-        "name": "8x8, Linkedin 15/05/24",
+        "name": "Map n\u00b0 3",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -181,7 +181,7 @@ const maps = {
         ]
     },
     "map4": {
-        "name": "8x8 : random",
+        "name": "Map n\u00b0 4",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -267,7 +267,7 @@ const maps = {
         ]
     },
     "map5": {
-        "name": "8x8 : Blocs de duo",
+        "name": "Map n\u00b0 5",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -353,7 +353,7 @@ const maps = {
         ]
     },
     "map6": {
-        "name": "9x9 : Linkedin 16/05/24",
+        "name": "Map n\u00b0 6",
         "caseNumber": 9,
         "colorGrid": [
             [
@@ -458,7 +458,7 @@ const maps = {
         ]
     },
     "map7": {
-        "name": "random-606806",
+        "name": "Map n\u00b0 7",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -544,7 +544,7 @@ const maps = {
         ]
     },
     "map8": {
-        "name": "random-571257",
+        "name": "Map n\u00b0 8",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -630,7 +630,7 @@ const maps = {
         ]
     },
     "map9": {
-        "name": "random-356036",
+        "name": "Map n\u00b0 9",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -716,7 +716,7 @@ const maps = {
         ]
     },
     "map10": {
-        "name": "random-617147",
+        "name": "Map n\u00b0 10",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -802,7 +802,7 @@ const maps = {
         ]
     },
     "map11": {
-        "name": "random-768010",
+        "name": "Map n\u00b0 11",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -888,7 +888,7 @@ const maps = {
         ]
     },
     "map12": {
-        "name": "random-610739",
+        "name": "Map n\u00b0 12",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -974,7 +974,7 @@ const maps = {
         ]
     },
     "map13": {
-        "name": "random-302590",
+        "name": "Map n\u00b0 13",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -1060,7 +1060,7 @@ const maps = {
         ]
     },
     "map14": {
-        "name": "random-965559",
+        "name": "Map n\u00b0 14",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -1146,7 +1146,7 @@ const maps = {
         ]
     },
     "map15": {
-        "name": "random-781685",
+        "name": "Map n\u00b0 15",
         "caseNumber": 8,
         "colorGrid": [
             [
@@ -1232,7 +1232,7 @@ const maps = {
         ]
     },
     "map16": {
-        "name": "random-688040",
+        "name": "Map n\u00b0 16",
         "caseNumber": 8,
         "colorGrid": [
             [
