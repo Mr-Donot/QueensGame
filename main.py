@@ -12,8 +12,8 @@ DIC_POSSIBLE_SOLUTION_MAX = {
     10:30
 }
 
-NB__TRY_TO_GENERATE = 100
-GRID_LEN = 8
+NB_TRY_TO_GENERATE = 1000
+GRID_LEN = 7
 NB_POSSIBLE_SOLUTION_MAX = DIC_POSSIBLE_SOLUTION_MAX[GRID_LEN]
 
 nb_new_added = 0
@@ -27,7 +27,7 @@ except FileNotFoundError:
     with open(fichier_json, 'w') as json_file:
         json.dump(data, json_file)
 
-for i in range(NB__TRY_TO_GENERATE):
+for i in range(NB_TRY_TO_GENERATE):
     new_map = generate_map(GRID_LEN)
     #testing difficulty
     solution = solve(new_map['colorGrid'], new_map['name'])

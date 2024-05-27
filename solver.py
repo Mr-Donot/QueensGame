@@ -42,18 +42,6 @@ def solve(queen_map, name):
 
     return result
 
-def increment_positions(arr):
-    n = len(arr)
-    i = n - 1
-    while i >= 0:
-        if arr[i] < n - 1:
-            arr[i] += 1
-            break
-        else:
-            arr[i] = 0
-            i -= 1
-    return arr
-
 
 def check_win(game_state, blocks):
     # Check rows and columns
