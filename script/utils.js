@@ -49,13 +49,19 @@ function addClickEventToCases(mapName) {
     function changeVisibilityCrownOnClick(event) {
         startChronometer();
         var imgElement = event.target;
-        imgElement.style.visibility = (imgElement.style.visibility=="hidden" ? "visible" : "hidden");
         let index = imgElement.id.split("-");
-        if (imgElement.style.visibility == "visible"){
+        
+        if (gameState[index[1]][index[2]] == 1){ // QUEEN -> EMPTY
+            gameState[index[1]][index[2]] = 0; 
+            imgElement.style.visibility = "hidden";
+        } else if (gameState[index[1]][index[2]] == 0){ // EMPTY -> MARKER
+            gameState[index[1]][index[2]] = -1;
+            imgElement.style.visibility = "visible";
+            imgElement.style.background = "radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,212,255,0) 76%)";
+        } else { // MARKER -> QUEEN
             gameState[index[1]][index[2]] = 1;
-        }
-        else{
-            gameState[index[1]][index[2]] = 0;
+            imgElement.style.visibility = "visible";
+            imgElement.style.background = "rgba(0, 0, 0, 0)";
         }
         checkWin(mapName);
     }
@@ -70,14 +76,19 @@ function addClickEventToCases(mapName) {
         var imgElement = event.target.getElementsByTagName('img')[0];
         if (imgElement != undefined) {
             startChronometer();    
-            imgElement.style.visibility = (imgElement.style.visibility=="hidden" ? "visible" : "hidden");
+            
             let index = imgElement.id.split("-");
-            if (imgElement.style.visibility == "visible"){
-                
+            if (gameState[index[1]][index[2]] == 1){ // QUEEN -> EMPTY
+                gameState[index[1]][index[2]] = 0; 
+                imgElement.style.visibility = "hidden";
+            } else if (gameState[index[1]][index[2]] == 0){ // EMPTY -> MARKER
+                gameState[index[1]][index[2]] = -1;
+                imgElement.style.visibility = "visible";
+                imgElement.style.background = "radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,212,255,0) 76%)";
+            } else { // MARKER -> QUEEN
                 gameState[index[1]][index[2]] = 1;
-            }
-            else{
-                gameState[index[1]][index[2]] = 0;
+                imgElement.style.visibility = "visible";
+                imgElement.style.background = "rgba(0, 0, 0, 0)";
             }
             checkWin(mapName);
         }
@@ -95,15 +106,18 @@ function checkWin(mapName){
     let j;
 
     for (i = 0; i < gameState.length ; i++){
-        let copiedArray = [...gameState[i]];
-        let sumRow = copiedArray.reduce((a, b) => a + b);
+
+        let sumRow = 0;
+        for (j = 0; j < gameState[i].length ; j++){
+            sumRow += Math.max(0,gameState[i][j]);
+        }
         if (sumRow != 1){
             return false;
-        }2
+        }
         let sumCol = 0;
 
         for (j = 0; j < gameState[i].length ; j++){
-            sumCol += gameState[j][i];
+            sumCol += Math.max(0,gameState[j][i]);
         }
 
         if (sumCol != 1){
@@ -135,7 +149,7 @@ function checkWin(mapName){
     for (var key in blocks){
         let sumBlock = 0;
         for (i = 0 ; i < blocks[key].length ; i++){
-            sumBlock += gameState[blocks[key][i][0]][blocks[key][i][1]];
+            sumBlock += Math.max(0,gameState[blocks[key][i][0]][blocks[key][i][1]]);
         }
         if (sumBlock > 1) {
             return false;
