@@ -57,11 +57,11 @@ function addClickEventToCases(mapName) {
         } else if (gameState[index[1]][index[2]] == 0){ // EMPTY -> MARKER
             gameState[index[1]][index[2]] = -1;
             imgElement.style.visibility = "visible";
-            imgElement.style.background = "radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,212,255,0) 76%)";
+            imgElement.src = './img/close.png';
         } else { // MARKER -> QUEEN
             gameState[index[1]][index[2]] = 1;
             imgElement.style.visibility = "visible";
-            imgElement.style.background = "rgba(0, 0, 0, 0)";
+            imgElement.src = './img/crown.png';
         }
         checkWin(mapName);
     }
@@ -75,8 +75,7 @@ function addClickEventToCases(mapName) {
     function changeVisibilityCrownInsideCaseOnClick(event) {
         var imgElement = event.target.getElementsByTagName('img')[0];
         if (imgElement != undefined) {
-            startChronometer();    
-            
+            startChronometer();
             let index = imgElement.id.split("-");
             if (gameState[index[1]][index[2]] == 1){ // QUEEN -> EMPTY
                 gameState[index[1]][index[2]] = 0; 
@@ -84,11 +83,11 @@ function addClickEventToCases(mapName) {
             } else if (gameState[index[1]][index[2]] == 0){ // EMPTY -> MARKER
                 gameState[index[1]][index[2]] = -1;
                 imgElement.style.visibility = "visible";
-                imgElement.style.background = "radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,212,255,0) 76%)";
+                imgElement.src = './img/close.png';
             } else { // MARKER -> QUEEN
                 gameState[index[1]][index[2]] = 1;
                 imgElement.style.visibility = "visible";
-                imgElement.style.background = "rgba(0, 0, 0, 0)";
+                imgElement.src = './img/crown.png';
             }
             checkWin(mapName);
         }
