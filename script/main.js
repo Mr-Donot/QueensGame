@@ -42,6 +42,7 @@ function showPopup() {
 }
   
 function closePopup() {
+    saveWinInDB();
     document.getElementById('victory-popup').style.display = 'none';
     launchMap(currentMap);
 }

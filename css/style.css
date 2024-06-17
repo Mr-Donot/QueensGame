@@ -133,7 +133,7 @@
     font-size: 1em; /* Font size */
 }
 
-#save-button, #close-popup {
+#close-popup {
     margin-top: 15px; /* Add space between the input field and buttons */
     padding: 10px 20px; /* Padding inside the buttons */
     border: none; /* Remove borders */
@@ -142,20 +142,11 @@
     transition: background-color 0.3s ease; /* Transition for hover effect */
 }
 
-#save-button {
-    background-color: #32CD32; /* Button color */
-    color: white; /* Text color */
-}
-
 #close-popup {
-    background-color: #dc3545; /* Button color */
+    background-color: #56ca49; /* Button color */
     color: white; /* Text color */
-}
-
-#save-button:hover {
-    background-color: #28a745; /* Button color on hover */
 }
 
 #close-popup:hover {
-    background-color: #6d4545; /* Button color on hover */
+    background-color: #616161; /* Button color on hover */
 }

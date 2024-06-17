@@ -43,25 +43,38 @@ function addHiddenCrown(){
 }
 
 function addClickEventToCases(mapName) {
-    //listener for img
     var imgs = document.querySelectorAll('.crown');
+    var optionMarker = document.querySelector('#optionMarker');
 
     function changeVisibilityCrownOnClick(event) {
         startChronometer();
         var imgElement = event.target;
         let index = imgElement.id.split("-");
         
-        if (gameState[index[1]][index[2]] == 1){ // QUEEN -> EMPTY
-            gameState[index[1]][index[2]] = 0; 
-            imgElement.style.visibility = "hidden";
-        } else if (gameState[index[1]][index[2]] == 0){ // EMPTY -> MARKER
-            gameState[index[1]][index[2]] = -1;
-            imgElement.style.visibility = "visible";
-            imgElement.src = './img/close.png';
-        } else { // MARKER -> QUEEN
-            gameState[index[1]][index[2]] = 1;
-            imgElement.style.visibility = "visible";
-            imgElement.src = './img/crown.png';
+        if (!optionMarker.checked) {
+            // If the checkbox is not checked, toggle between QUEEN and EMPTY
+            if (gameState[index[1]][index[2]] == 1){ // QUEEN -> EMPTY
+                gameState[index[1]][index[2]] = 0; 
+                imgElement.style.visibility = "hidden";
+            } else { // EMPTY -> QUEEN
+                gameState[index[1]][index[2]] = 1;
+                imgElement.style.visibility = "visible";
+                imgElement.src = './img/crown.png';
+            }
+        } else {
+            // If the checkbox is checked, follow the original behavior
+            if (gameState[index[1]][index[2]] == 1){ // QUEEN -> EMPTY
+                gameState[index[1]][index[2]] = 0; 
+                imgElement.style.visibility = "hidden";
+            } else if (gameState[index[1]][index[2]] == 0){ // EMPTY -> MARKER
+                gameState[index[1]][index[2]] = -1;
+                imgElement.style.visibility = "visible";
+                imgElement.src = './img/close.png';
+            } else { // MARKER -> QUEEN
+                gameState[index[1]][index[2]] = 1;
+                imgElement.style.visibility = "visible";
+                imgElement.src = './img/crown.png';
+            }
         }
         checkWin(mapName);
     }
@@ -77,17 +90,31 @@ function addClickEventToCases(mapName) {
         if (imgElement != undefined) {
             startChronometer();
             let index = imgElement.id.split("-");
-            if (gameState[index[1]][index[2]] == 1){ // QUEEN -> EMPTY
-                gameState[index[1]][index[2]] = 0; 
-                imgElement.style.visibility = "hidden";
-            } else if (gameState[index[1]][index[2]] == 0){ // EMPTY -> MARKER
-                gameState[index[1]][index[2]] = -1;
-                imgElement.style.visibility = "visible";
-                imgElement.src = './img/close.png';
-            } else { // MARKER -> QUEEN
-                gameState[index[1]][index[2]] = 1;
-                imgElement.style.visibility = "visible";
-                imgElement.src = './img/crown.png';
+            
+            if (!optionMarker.checked) {
+                // If the checkbox is not checked, toggle between QUEEN and EMPTY
+                if (gameState[index[1]][index[2]] == 1){ // QUEEN -> EMPTY
+                    gameState[index[1]][index[2]] = 0; 
+                    imgElement.style.visibility = "hidden";
+                } else { // EMPTY -> QUEEN
+                    gameState[index[1]][index[2]] = 1;
+                    imgElement.style.visibility = "visible";
+                    imgElement.src = './img/crown.png';
+                }
+            } else {
+                // If the checkbox is checked, follow the original behavior
+                if (gameState[index[1]][index[2]] == 1){ // QUEEN -> EMPTY
+                    gameState[index[1]][index[2]] = 0; 
+                    imgElement.style.visibility = "hidden";
+                } else if (gameState[index[1]][index[2]] == 0){ // EMPTY -> MARKER
+                    gameState[index[1]][index[2]] = -1;
+                    imgElement.style.visibility = "visible";
+                    imgElement.src = './img/close.png';
+                } else { // MARKER -> QUEEN
+                    gameState[index[1]][index[2]] = 1;
+                    imgElement.style.visibility = "visible";
+                    imgElement.src = './img/crown.png';
+                }
             }
             checkWin(mapName);
         }
@@ -95,8 +122,6 @@ function addClickEventToCases(mapName) {
     cases.forEach(function(elem) {
         elem.addEventListener('click', changeVisibilityCrownInsideCaseOnClick);
     });
-
-
 }
 
 function checkWin(mapName){
