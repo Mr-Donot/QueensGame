@@ -16,6 +16,9 @@ nav {
     background-color: #333;
     padding: 10px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav button {
@@ -25,6 +28,20 @@ nav button {
     padding: 10px 20px;
     margin: 0 5px;
     cursor: pointer;
+}
+
+/* Style for the new button linking to index.html */
+nav a img {
+    width: 40px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    margin: 0 5px; /* Space on the sides of the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.3s ease; /* Smooth transition effect */
+    align-self: center; /* Align the image vertically with the buttons */
+}
+
+nav a img:hover {
+    transform: scale(1.1); /* Slightly increase the size on hover */
 }
 
 /* Leaderboard container styles */

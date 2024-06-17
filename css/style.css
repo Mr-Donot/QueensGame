@@ -8,6 +8,18 @@
     background: #f8f8f8; /* Couleur de fond pour le menu */
     border-bottom: 2px solid #e7e7e7; /* Ligne de séparation */
 }
+/* Style for the leaderboard button */
+#menu a img {
+    width: 40px; /* Adjust the width as needed */
+    height: 40px; /* Adjust the height as needed */
+    margin-left: 10px; /* Space to the left of the button */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.3s ease; /* Smooth transition effect */
+}
+
+#menu a img:hover {
+    transform: scale(1.1); /* Slightly increase the size on hover */
+}
 
 /* Style pour le sélecteur de carte */
 #mapSelector, #colorSelector {
