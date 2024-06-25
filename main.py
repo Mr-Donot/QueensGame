@@ -8,13 +8,14 @@ DIC_POSSIBLE_SOLUTION_MAX = {
     6:1,
     7:1,
     8:5,
-    9:20,
+    9:25,
     10:50
 }
 
-NB_TRY_TO_GENERATE = 5000
+NB_TRY_TO_GENERATE = 100
 
-GRID_LEN = 7
+GRID_LEN = 9
+NB_LIMIT_TO_GENERATE = 1
 NB_POSSIBLE_SOLUTION_MAX = DIC_POSSIBLE_SOLUTION_MAX[GRID_LEN]
 
 nb_new_added = 0
@@ -46,6 +47,9 @@ for i in range(NB_TRY_TO_GENERATE):
             new_map['name'] = "Map n° " + str(len(data.keys())+1)
             data["map"+str(len(data.keys())+1)] = new_map
             nb_new_added += 1
+        
+        if nb_new_added == NB_LIMIT_TO_GENERATE:
+            break
 
 
 with open('generated_maps/maps.json', 'w', encoding='utf-8') as f:
