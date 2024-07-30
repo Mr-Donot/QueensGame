@@ -1,3 +1,4 @@
-*.json
+manual_maps.json
+maps copy.json
 /.venv/
 /__pycache__/
